@@ -46,7 +46,7 @@
 <!ENTITY j "<choice><orig>i</orig><reg>j</reg></choice>">
 <!ENTITY J "<choice><orig>I</orig><reg>J</reg></choice>">
 
-<!ENTITY espace "<choice><orig></orig><reg>&#x0020;</reg></choice>">
+<!ENTITY espace "<choice><orig></orig><reg> </reg></choice>">
 <!ENTITY absespace "<choice><sic> </sic><corr></corr></choice>">
 <!ENTITY apost "<choice><orig></orig><reg>'</reg></choice>">
 <!ENTITY guillemet-ouvrant '<choice><sic></sic><corr>"</corr></choice>'>
