@@ -284,7 +284,7 @@
                
                <person xml:id="Gauvain">
                   <persName>Gauvain</persName>
-                  <note>Gauvain est le neveu du roi Artus. Il est l'un des chevaliers de la Table ronde. Il fait d'Hélains de Taningues, un chevalier.</note>
+                  <note>Gauvain est le neveu du roi Arthur. Il est l'un des chevaliers de la Table ronde. Il fait d'Hélains de Taningues, un chevalier.</note>
                </person>
                
                <person xml:id="Helains-Taningues">
@@ -307,11 +307,13 @@
                   <note>L'Être suprême dans la chrétienneté.</note>
                </person>
                
-               <person xml:id="Artus">
+               <person xml:id="Artur">
                   <persName>Roy Artus</persName>
-                  <note>Le roi Arthur réunit les chevaliers de la Table Ronde, dont Gauvain fait partie. Ces derniers participent à des quêtes mythiques dont celle du Saint Graal.   </note>
+                  <note>Selon Geoffroy de Monmouth, le roi Arthur règne sur un vaste Empire dont le royaume de Bretagne fait partie. Il est le fils illégitime du roi breton Uther Pendragon et Ygern. Il va être caché par Merlin.
+                     Il acquière ensuite sa légitimité et devient roi des Bretons en libérant l'épée Excalibur du roc qui l'emprisonne.
+                     Chrétien de Troyes ajoute à la légende arturienne la quête du Saint-Graal, l'histoire du Lancelot du Lac et plus généralement la romance arturienne.</note>
                </person>
-               
+                
                <person xml:id="mere-Helains">
                   <persName>mere</persName>
                   <note>Parente à qui Helains de Taningues raconte son rêve.</note>
@@ -324,7 +326,7 @@
          <settingDesc>
             <listPlace>
                
-               <place xml:id="Ostel-Taningues">
+               <place xml:id="hotel-Taningues">
                   <placeName>Ostel</placeName>
                   <note>Lieu d'habitation d'Hélains de Taningues, où séjourne Gauvain pendant sa convalescence. </note>
                </place>
@@ -357,6 +359,7 @@
                
                <place xml:id="cour-Artus">
                   <placeName>court Artus</placeName>
+                  <note>La cour d'Arthur fait référence à la Table ronde qui est un ordre légendaire au service du Roi Arthur. Elle réunit l'élite de la chevalerie en quête du Saint Graal. Lancelot et Gauvain en font partie.</note>
                </place>
                
             </listPlace>
@@ -674,7 +677,7 @@
                   <lb facs="#l3"/>&tiret;&s;ires <persName ref="#Gauvain">&Gauvain;</persName>
                   <lb facs="#l4"/>&et; li <persName ref="#valet-Gauvain">vallez</persName> &qui;
                   <lb facs="#l5"/>l&apost;enmaine&virgule;
-                  <lb facs="#l6"/>&s;ont &à;&espace;l&apost;<placeName ref="#Ostel-Taningues">o&s;tel</placeName>
+                  <lb facs="#l6"/>&s;ont &à;&espace;l&apost;<placeName ref="#hotel-Taningues">o&s;tel</placeName>
                   <lb facs="#l7"/>venuz&point; &S;i&espace;le des&absespace;arme li 
                   <lb facs="#l8"/><persName ref="#valet-Gauvain">vallez</persName> et aai&s;e de toutes 
                   <lb facs="#l9"/>les cho&s;es que il con&v;i&ent;
@@ -727,7 +730,7 @@
                    <lb facs="#l53"/>Et &j;e li di&s;oit&guillemet-ouvrant2; <said who="#Helains-Taningues">&Q;ui e&s;tes
                    <lb facs="#l54"/>vous &s;ire qui &chevalier; me 
                    <lb facs="#l55"/>voulez faire&point-interrogation;</said> &tiret-long; <said who="#Gauvain">&J;e &s;ui&virgule; fer
-                   <lb facs="#l56"/>&tiret;il&virgule; <persName ref="#Gauvain">&Gauvain;</persName>&virgule; li&espace;nies le <persName ref="#Artus">roy 
+                   <lb facs="#l56"/>&tiret;il&virgule; <persName ref="#Gauvain">&Gauvain;</persName>&virgule; li&espace;nies le <persName ref="#Artur">roy 
                    <lb facs="#l57"/>&A;rtus</persName>&point;</said> &tiret-long; <said who="#Helains-Taningues">&H;a&point-exclamation2; &S;ire&virgule; fai&s;oie
                    <lb facs="#l58"/>&tiret;&j;e&virgule; vous &s;oiez li&espace;bien 
                   <lb facs="#l59"/>venuz</said>&point; &guillemet-fermant;&virgule; &s;i me&s;&v;eillai&point;</p>
@@ -854,7 +857,7 @@
                   <lb facs="#l171"/>aai&s;e.</said> &tiret-long; <said who="#Gauvain">Tout &s;eurem&en;t&virgule;
                   <lb facs="#l172"/>fait&tiret;il&virgule; dites &à;&espace;touz ceuz
                   <lb facs="#l173"/>qui le demanderont &que;
-                  <lb facs="#l174"/><persName ref="#Gauvain">&Gauvain;</persName>&virgule; li niez le <persName ref="#Artus">roy &A;rt&us;</persName>&virgule;
+                  <lb facs="#l174"/><persName ref="#Gauvain">&Gauvain;</persName>&virgule; li niez le <persName ref="#Artur">roy &A;rt&us;</persName>&virgule;
                   <lb facs="#l175"/>vous a&espace;fait &chevalier;</said>.&guillemet-fermant3;</p> <p n="7">&E;t &quant;
                   <lb facs="#l176"/>&H;elains l&apost;entent&virgule; &s;i a &s;i 
                   <lb facs="#l177"/>&grant; &j;oie que greignor
@@ -938,7 +941,7 @@
                   <lb facs="#l249"/>lors &s;epart de lui&virgule; &s;i &s;&apost;entre 
                   <lb facs="#l250"/>commandent &à;&espace;<persName ref="#Dieu">&D;ieu</persName>.</p> <p n="10">Si 
                   <lb facs="#l251"/>&s;&apost;en repaire <persName ref="#Helains-Taningues">&H;elain</persName> &à;&espace;&s;on 
-                  <lb facs="#l252"/><placeName ref="#Ostel-Taningues">ho&s;tel</placeName> et mande &s;es amis 
+                  <lb facs="#l252"/><placeName ref="#hotel-Taningues">ho&s;tel</placeName> et mande &s;es amis 
                   <lb facs="#l253"/>&et; &s;es voi&s;ins&abspoint;pour &j;oie fai
                   <lb facs="#l254"/>&tiret;re de &s;on&espace;nour&point; &E;t lors c&on; 
                   <lb facs="#l255"/>&tiret;te comment <persName ref="#Dieu">&D;iey</persName> li&espace;a&espace;tou 

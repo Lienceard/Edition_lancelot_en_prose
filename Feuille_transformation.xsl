@@ -6,7 +6,10 @@
     <!-- Attention une sortie HTML => exclusion du préfixe tei des résultats -->
     
     <xsl:output method="html" indent="yes" encoding="UTF-8"/>
+    
+    <!-- Gestion des espaces -->
     <xsl:strip-space elements="*"/> <!-- pour éviter les espaces non voulus -->
+    <xsl:preserve-space elements="p said placeName persName orig reg"/> <!-- pour préserver les espaces contenus dans certains éléments  -->
     <xsl:template match="/">
         <xsl:variable name="witfile">
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
@@ -118,9 +121,9 @@
                         <dt><b>Support :</b></dt><dd><xsl:value-of select=".//support"/></dd>
                         <dt><b>Format :</b></dt><dd><xsl:value-of select="concat(.//width/@unit, ' x ', .//height/@unit)"/></dd>
                         <dt><b>Foliation :</b></dt><dd><xsl:value-of select=".//foliation"/></dd>
-                        <dt><b>Disposition du text :</b></dt><dd><xsl:value-of select=".//layout"/></dd>
+                        <dt><b>Disposition du text :</b></dt><dd><xsl:value-of select="concat('Le text est ', .//layout)"/>  Par conséquent, certains mots sont coupés. La coupure des mots a été rétablie (voire corrigée), et indiquée par des tirets "-" dans la transcription normalisée.</dd>
                         <dt><b>Décorations :</b></dt><dd><xsl:value-of select="concat(.//decoDesc/decoNote[1]/@type, ', ', .//decoDesc/decoNote[2]/@type, ' ornées')"/></dd>
-                        <dd>Les décorations sont davantages détaillées dans la présentation de chaque chapitre/rubrique du manuscrit qui précède les transcriptions.</dd>
+                        <dd>Les décorations sont davantages détaillées dans la présentation de chaque chapitre du manuscrit qui précède les transcriptions.</dd>
                         <dt><b>Reliure :</b></dt><dd><xsl:value-of select=".//decoNote[@type='reliure'] |.//decoNote[@type='armoiries']"/></dd>
                         <dt><b>Etat de conservation :</b></dt><dd><xsl:value-of select=".//condition"/></dd>
                     </dl>
@@ -169,7 +172,8 @@
                        <xsl:apply-templates select=".//decoDesc"/>
                         
                     </div>
-                                      
+                    
+                        
                                
                 </body>
             </html>
@@ -204,8 +208,6 @@
                         <div>
                             <xsl:apply-templates select=".//div[@type='chapitre']" mode="reg"/>
                         </div>
-                     
-                        
                     
                 </body>
             </html>
@@ -238,8 +240,8 @@
                     <h3>La transcription facsimilaire</h3>
                     <div>
                         
-                        <xsl:apply-templates select=".//div[@type='chapitre']" mode="orig"/>
-                       
+                        <xsl:apply-templates select=".//div[@type='chapitre']" mode="orig"/>                  
+                        
                     </div>
                 </body>
             </html>
@@ -282,7 +284,7 @@
                     <span>
                         <a href="{$pathAccueil}">Retour accueil</a>
                     </span>
-                    <h2>Index des lieux</h2>
+                    <h2>Index des personnages</h2>
                     <div>
                         <ul><xsl:call-template name="indexPers"/></ul>
                     </div>     
@@ -344,8 +346,38 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="text/body//p//persName" mode="#all">
+                <xsl:variable name="witfile">
+                    <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
+                    <!-- récupération du nom et du chemin du fichier courant -->
+                </xsl:variable>
+                <xsl:variable name="pathIndexPers">
+                    <xsl:value-of select="concat($witfile,'indexPers','.html')"/>
+                </xsl:variable>
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="$pathIndexPers"/>
+                    </xsl:attribute>
+                    <xsl:apply-templates mode="#current"/>
+                </xsl:element>
+            </xsl:template>
     
-    
+    <xsl:template match="text/body//p//placeName" mode="#all">
+        <xsl:variable name="witfile">
+            <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
+            <!-- récupération du nom et du chemin du fichier courant -->
+        </xsl:variable>
+        <xsl:variable name="pathIndexLieux">
+            <xsl:value-of select="concat($witfile,'indexLieux','.html')"/>
+        </xsl:variable>
+        <xsl:element name="a">
+            <xsl:attribute name="href">
+                <xsl:value-of select="$pathIndexLieux"/>
+            </xsl:attribute>
+            <xsl:apply-templates mode="#current"/>
+        </xsl:element>
+    </xsl:template>
+   
     <xsl:template match="choice" mode="orig">
         <xsl:value-of select=".//orig/text() |
             .//abbr/text()| .//sic/text()"/>
@@ -362,13 +394,14 @@
     <xsl:template name="indexPers">
         <xsl:for-each select=".//listPerson//persName">
             <li>
-                <xsl:value-of select="."/>
+                <i><xsl:value-of select="."/></i>
                 <xsl:variable name="idPerson">
                     <xsl:value-of select="parent::person/@xml:id"/>
                 </xsl:variable>
                 <xsl:text> : </xsl:text>
+                <xsl:value-of select="ancestor::person/note"/>
+                <p>
                 <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#','')=$idPerson]">
-                    <xsl:apply-templates mode="reg"/>
                     <xsl:text> (§.</xsl:text>
                     <xsl:choose>
                         <xsl:when test="ancestor::said">
@@ -382,6 +415,7 @@
                         <xsl:otherwise>.</xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
+                    </p>
             </li>
         </xsl:for-each>
     </xsl:template>
@@ -391,13 +425,14 @@
     <xsl:template name="indexLieux">
         <xsl:for-each select=".//listPlace//placeName">
             <li>
-                <xsl:value-of select="."/>
+                <i><xsl:value-of select="."/></i>
                 <xsl:variable name="idPlace">
                     <xsl:value-of select="parent::place/@xml:id"/>
                 </xsl:variable>
                 <xsl:text> : </xsl:text>
+                <xsl:value-of select="ancestor::place/note"/>
+                <p>
                 <xsl:for-each select="ancestor::TEI//body//placeName[replace(@ref, '#','')=$idPlace]">
-                    <xsl:apply-templates mode="reg"/>
                     <xsl:text> (§.</xsl:text>
                     <xsl:choose>
                         <xsl:when test="ancestor::said">
@@ -410,7 +445,8 @@
                         <xsl:when test="position()!= last()">, </xsl:when>
                         <xsl:otherwise>.</xsl:otherwise>
                     </xsl:choose>
-                </xsl:for-each>
+                    </xsl:for-each>
+                    </p>
             </li>
         </xsl:for-each>
     </xsl:template>
