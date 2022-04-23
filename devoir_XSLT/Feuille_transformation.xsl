@@ -43,10 +43,6 @@
         </xsl:variable>
           
         
-        <xsl:variable name="titre_manuscrit">
-            <xsl:value-of select="concat(.//head/title, ' ', '(',.//head/origDate, ')', ' de ', .//name[@xml:id='Gauthier_Map'] )"/>
-        </xsl:variable>  
-        
         <!-- la page d'accueil -->
        
         <xsl:result-document href="{$pathAccueil}"
@@ -104,13 +100,13 @@
                    
                     <h3>L'identification :</h3>
                     <dl>
-                        <dt><b>Institution de conservation :</b></dt><dd><xsl:value-of select="concat(.//country, ' - ', .//institution, ' (', .//settlement, ') ', .//repository )"/></dd>
+                        <dt><b>Institution de conservation :</b></dt><dd><xsl:value-of select="concat(.//msIdentifier/country, ' - ', .//msIdentifier/institution, ' (', .//msIdentifier/settlement, ') ', ' - ', .//msIdentifier/repository )"/></dd>
                         <dt><b>Cote :</b></dt><dd><xsl:value-of select=".//msIdentifier/idno"/></dd>
                         <dt><b>Ancienne cote :</b></dt><dd><xsl:value-of select=".//altIdentifier[1]/idno"/></dd>
                     </dl>
                     
                     <h3>L'histoire de la conservation du manuscrit :</h3>
-                    <p><xsl:value-of select=".//origin | .//provenance/p"/></p>
+                    <p><xsl:value-of select=".//history/origin | .//history/provenance/p"/></p>
                     
                     <h3>Les mentions de responsabilité :</h3>
                     
@@ -188,6 +184,44 @@
             </html>
         </xsl:result-document>
         
+        <!-- la page de la transcription facsimilaire -->
+        
+        <xsl:result-document href="{$pathAllo}"
+            method="html" indent="yes">       
+            <html>
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                    <title>
+                        <xsl:value-of select=".//titleStmt/title"/>
+                    </title>
+                    <script>
+                        p {
+                        margin-bottom: 2em; // on ajoute un espace après chaque paragraphe
+                        }
+                    </script>
+                </head>
+                <body>
+                    
+                    <h1><xsl:value-of select="$titre_manuscrit"/></h1>
+                    
+                    <div>
+                        <a href="{$pathAccueil}">Retour accueil</a>
+                    </div>
+                    
+                    <h2><xsl:call-template name="titre_chapitre"/></h2>
+                    
+                    <h3>La transcription facsimilaire</h3>
+                    <div>
+                        
+                        <xsl:apply-templates select=".//div[@type='chapitre']" mode="orig"/>                  
+                        
+                    </div>
+                </body>
+            </html>
+        </xsl:result-document>
+        
+        <!-- la page de la transcription normalisée -->
+        
         <xsl:result-document href="{$pathNorm}"
             method="html" indent="yes">
             <html>
@@ -222,61 +256,7 @@
             </html>
         </xsl:result-document>
         
-        <xsl:result-document href="{$pathAllo}"
-            method="html" indent="yes">       
-            <html>
-                <head>
-                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-                    <title>
-                        <xsl:value-of select=".//titleStmt/title"/>
-                    </title>
-                    <script>
-                    p {
-                    margin-bottom: 2em; // on ajoute un espace après chaque paragraphe
-                    }
-                    </script>
-                </head>
-                <body>
-                    
-                    <h1><xsl:value-of select="$titre_manuscrit"/></h1>
-                                 
-                    <div>
-                       <a href="{$pathAccueil}">Retour accueil</a>
-                    </div>
-                    
-                    <h2><xsl:call-template name="titre_chapitre"/></h2>
-                    
-                    <h3>La transcription facsimilaire</h3>
-                    <div>
-                        
-                        <xsl:apply-templates select=".//div[@type='chapitre']" mode="orig"/>                  
-                        
-                    </div>
-                </body>
-            </html>
-        </xsl:result-document>
-        
-        <xsl:result-document href="{$pathIndexLieux}"
-            method="html" indent="yes">          
-            <html>
-                <head>
-                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-                    <title>
-                        <xsl:value-of select=".//titleStmt/title"/>
-                    </title>
-                </head>
-                <body>
-                    <h1><xsl:value-of select="$titre_manuscrit"/></h1>
-                    <span>
-                        <a href="{$pathAccueil}">Retour accueil</a>
-                    </span>
-                    <h2>Index des lieux</h2>
-                    <div>
-                        <ul><xsl:call-template name="indexLieux"/></ul>
-                    </div>     
-                </body>
-            </html>
-        </xsl:result-document>
+        <!-- la page de l'index des personnages -->
         
         
         <xsl:result-document href="{$pathIndexPers}"
@@ -296,25 +276,71 @@
                     <h2>Index des personnages</h2>
                     <div>
                         <ul><xsl:call-template name="indexPers"/></ul>
-                    </div>     
+                    </div>
+                    <div>
+                        <p>§ : paragraphe</p>
+                    </div>
+                    
+                   
+                </body>
+            </html>
+        </xsl:result-document>
+        
+        <!-- la page de l'index des lieux -->
+        
+        <xsl:result-document href="{$pathIndexLieux}"
+            method="html" indent="yes">          
+            <html>
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                    <title>
+                        <xsl:value-of select=".//titleStmt/title"/>
+                    </title>
+                </head>
+                <body>
+                    <h1><xsl:value-of select="$titre_manuscrit"/></h1>
+                    <span>
+                        <a href="{$pathAccueil}">Retour accueil</a>
+                    </span>
+                    <h2>Index des lieux</h2>
+                    <div>
+                        <ul><xsl:call-template name="indexLieux"/></ul>
+                    </div>  
+                    <div>
+                        <p>§ : paragraphe</p>
+                    </div>
+                    
                 </body>
             </html>
         </xsl:result-document>
         
         </xsl:template>
     
-    <!-- variables pour la page d'accueil -->
+    <!-- le titre du manuscrit  -->
+    
+    <xsl:variable name="titre_manuscrit">
+        <xsl:value-of select="concat(.//head/title, ' ', '(',.//head/origDate, ')', ' de ', .//name[@xml:id='Gauthier_Map'] )"/>
+    </xsl:variable>  
+    
+    <!-- le titre du chapitre -->
+    
+    <xsl:template name="titre_chapitre">
+        <xsl:if test=".//text/body//div[@type='chapitre']">
+            <xsl:value-of select="concat(upper-case(.//div/div/@type), ' ', .//div/div/@n, ' : ','La ', replace(replace(.//div/div/@subtype, '#', ''), '_', ' de '))"/>
+        </xsl:if>
+        
+    </xsl:template>
+    
+    <!-- les variables pour la page d'accueil -->
     
     <xsl:variable name="ms_bnf">
         <xsl:value-of select="replace(.//msDesc/@*[local-name()='id'] , 'ms', '')"/>
     </xsl:variable>
     <xsl:variable name="responsable">
         <xsl:value-of select="replace(.//editionStmt/respStmt/resp, 'et', 'et d une')"/>
-    </xsl:variable>
+    </xsl:variable>   
     
-    <!-- notice du manuscrit -->
-    
-    <!--les décorations -->
+    <!--les décorations pour la notice du chapitre -->
     <xsl:template match="decoDesc/decoNote/p">
         <xsl:copy>
                 <xsl:choose>
@@ -333,14 +359,6 @@
         </xsl:copy>
     </xsl:template>
     
-    <!-- les transcriptions alliographétiques et normalisées -->
-    
-    <xsl:template name="titre_chapitre">
-        <xsl:if test=".//text/body//div[@type='chapitre']">
-            <xsl:value-of select="concat(upper-case(.//div/div/@type), ' ', .//div/div/@n, ' : ','La ', replace(replace(.//div/div/@subtype, '#', ''), '_', ' de '))"/>
-        </xsl:if>
-        
-    </xsl:template>
     
     <!-- les paragraphes dans les transcriptions -->
     
@@ -389,11 +407,14 @@
         </xsl:element>
     </xsl:template>
    
+   <!-- la transcription facsimilaire -->
+    
     <xsl:template match="choice" mode="orig">
         <xsl:value-of select=".//orig/text() |
             .//abbr/text()| .//sic/text()"/>
     </xsl:template>
     
+    <!-- la transcription normalisée -->
     
     <xsl:template match="choice" mode="reg">
         <xsl:value-of select=".//reg/text() |
