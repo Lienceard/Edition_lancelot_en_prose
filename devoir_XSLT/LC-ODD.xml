@@ -11,9 +11,9 @@
                   </persName>
                </author>
             </titleStmt>
-         <!-- si l'édition était publiée par les édition de l'École nationale des chartes et mis en ligne sous licence creactive commons -->
+         <!-- si l'édition était publiée par les éditions de l'École nationale des chartes et mise en ligne sous licence creactive commons -->
            <publicationStmt>
-               <publisher>Éditions en ligne de l’École des chartes</publisher>
+               <publisher>Éditions en ligne de l’École nationale des chartes</publisher>
                <pubPlace>Paris</pubPlace>
                <date when-iso="2022-02">Février 2022</date>
                <availability>
@@ -22,7 +22,7 @@
                </availability>
             </publicationStmt>     
          <sourceDesc>
-            <p>transcription et encodage réalisés à partir de la numérisation du manuscrit disponible sur Gallica : 
+            <p>La transcription et l'encodage ont été réalisés à partir de la numérisation du manuscrit Français 16999 disponible sur Gallica : 
                   <graphic url="https://gallica.bnf.fr/ark:/12148/btv1b6000418r/f213, https://gallica.bnf.fr/ark:/12148/btv1b6000418r/f214"></graphic></p>
          </sourceDesc>
       </fileDesc>
@@ -30,27 +30,27 @@
    <text>
       <body>
          <div1>
-            <head>Guide d'encodage sur l'édition nativement numérique d'un extrait de la "Quête de Gauvain" qui est issue du manuscrit 
+            <head>Guide d'encodage sur l'édition nativement numérique d'un extrait de la "Quête de Gauvain" qui est issue du manuscrit Français 16999
                   de la <hi rend="italic">Première partie du roman en prose du Lancelot du lac</hi> de Gauthier Map, conservé à la Bibliothèque nationale de France.</head>
             <p>Ce guide aborde les choix d'encodage d'une manière détaillée. Il pourra servir de documentation dans le cas où d'autres feuillets du manuscrit 
                   de la <hi rend="italic">Première partie du roman en prose du Lancelot du lac</hi>, seraient édités au format XML-TEI. Les données produites pourront ainsi 
                   être pérennisées, interopérables et réutilisables.</p>
             <p>L'extrait commence <locus from="101r" to="101v">après la miniature située sur le folio 101r et se termine avant la rubrique en rouge sur le folio 101v</locus>. 
-                  L'édition numérique est un document au format XML-TEI qui est accompagné d'une DTD et d'une ODD(ce présent document).</p>
-            <p>L'encodage a été réalisé en vue d'une édition critique moderne d'un manuscrit respectant sa mise en forme tout en facilitant sa lecture. 
-                  À terme un transformation en XSLT permettra d'associer une visualisation du manuscrit et de l'extrait qui a été transcrit et encodé.</p>
+                  L'édition numérique est un document au format XML-TEI qui est accompagné d'une DTD, d'une ODD(ce présent document) et d'une feuille de transformation XSL.</p>
+            <p>L'encodage a été réalisé en vue d'une édition critique moderne qui respecte la mise en forme du manuscrit et facilite la lecture des passages transcrits. 
+                  À terme un transformation en XSLT permettra d'associer une visualisation du manuscrit et de l'extrait qui a été transcrit et encodé. Pour le moment, une édition numérique en ligne est disponible.</p>
             
             <div2>
                <head>La structure du document XML-TEI</head>
                <p>Le document XMl-TEI est contenu dans un élément racine <gi>TEI</gi>
                   Celui-ci contient le <gi>teiHeader</gi>, le <gi>facsimile</gi> et le <gi>text</gi>.</p>
-               <p>Le <gi>teiHeader</gi> est l'en-tête du document. Elle contient les métadonnées nécessaires à la description.</p> 
+               <p>Le <gi>teiHeader</gi> est l'en-tête du document. Il contient les métadonnées nécessaires à la description.</p> 
                <p>L'élément <gi>facsimile</gi> va contenir les informations qui vont permettre de faire correspondre sa transcription à une numérisation.</p>
                <p>L'élément <gi>text</gi> contient l'intégralité de la transcription du manuscrit.</p>
             
             <div3>
                <head>Le <hi rend="italic">teiHeader</hi></head>
-               <p>Le <gi>teiHeader</gi> est composé du <gi>fileDesc</gi>, <gi>profileDesc</gi>.</p>
+               <p>Le <gi>teiHeader</gi> est composé du <gi>fileDesc</gi> et du <gi>profileDesc</gi>.</p>
                <div4>
                   <head>Le <hi rend="italic">fileDesc</hi></head>
                   <p>Le <gi>fileDesc</gi> est la description bibliographique du document. Il est composé des éléments suivants :<specList>
@@ -66,10 +66,9 @@
                   <div5>
                      <head>Les éléments <hi rend="italic">titleStmt</hi>, <hi rend="italic">editionStmt</hi>, <hi rend="italic">publicationStmt</hi></head>
                      <p>Le <gi>titleStmt</gi> permet de déclarer le titre de l'édition numérique, contenu dans le <gi>title</gi></p>
-                     <p>L'<gi>editionStmt</gi> présente le contexte et les particulatités de l'édition par l'élément <gi>edition</gi> et 
+                     <p>L'<gi>editionStmt</gi> présente le contexte et les particularités de l'édition par l'élément <gi>edition</gi> et 
                            de l'auteur responsable de l'encodage par l'élément <gi>respStmt</gi>. Dans cet élément, on décrit les responsabilités de l'auteur par <gi>resp</gi> 
-                           et ses patronymes avec les éléments <gi>foreName</gi> et <gi>surName</gi> dans <gi>persName</gi>. 
-                           Le faible nombre de personne associées à cette édition n'invitait pas à utiliser <gi>encodingDesc</gi>.</p><!-- quelque peu maladroit -->
+                           et ses patronymes avec les éléments <gi>foreName</gi> et <gi>surName</gi> dans <gi>persName</gi>.</p>
                      
                      <egXML xmlns="http://www.tei-c.org/ns/Examples">
                         <editionStmt>
@@ -94,7 +93,7 @@
                  <div5>
                     <head>Le <hi rend="italic">sourceDesc</hi></head>
                     <p>Le <gi>sourceDesc</gi> contient la description de la source à partir de laquelle on a réalisé l'encodage. 
-                          Il s'agit du manuscrit 16999, la <hi rend="italic">Première partie du roman en prose du Lancelot du lac</hi> de Gauthier Map 
+                          Il s'agit du manuscrit Français 16999, la <hi rend="italic">Première partie du roman en prose du Lancelot du lac</hi> de Gauthier Map 
                           numérisé et conservé à la Bibliothèque nationale de France. 
                           Sa <ref target="https://gallica.bnf.fr/ark:/12148/btv1b6000418r/f213, https://gallica.bnf.fr/ark:/12148/btv1b6000418r/f214">numérisation</ref> est disponible sur Gallica.</p>
                     <p>L'élément <gi>sourceDesc</gi> a été adapté à l'édition d'un unique manuscrit grâce à un module complémentaire : le <gi>msDesc</gi>; 
@@ -108,12 +107,12 @@
                     <p>Le <gi>msIdentifier</gi> contient les informations requises pour identifier le manuscrit qui est décrit par l'élément <gi>msDesc</gi>. 
                           Il renseigne le pays de conservation(<gi>country</gi>), la ville de conservation (<gi>settlement</gi>), 
                           l'institution en charge de la conservation du manuscrit (<gi>institution</gi>) et la côte actuelle(<gi>idno</gi>) 
-                          et les anciennes côtes en les mettants chacune dans un élément <gi>altIdentifier</gi>.</p>
+                          et les anciennes côtes en les mettant chacune dans un élément <gi>altIdentifier</gi>.</p>
                     <p>L'élément <gi>head</gi> est en quelque sorte la fiche du manuscrit. Il indique son titre (<gi>title</gi>) et sa date d'origine (<gi>origDate</gi>). 
-                          Dans l'encodage, il n'a pas été possible de rajouter à la balise <gi>origDate</gi>, un attribut <att>when</att> pour renseigner la date selon la norme ISO 8601. <!-- il aurait été possible d'autoriser cela avec l'ODD -->
-                          Il n'était pas possible de renseigner une période d'une durée d'un siècle. Habituellement, pour les balises <gi>date</gi>, cet attribut est ajouté.</p>
+                          Dans l'encodage, il n'est pas possible de rajouter, à la balise <gi>origDate</gi>, un attribut <att>when</att> pour renseigner la date selon la norme ISO 8601.
+                          Il n'est pas possible de renseigner une période d'une durée d'un siècle. Habituellement, pour les balises <gi>date</gi>, cet attribut est ajouté.</p>
                     <p>L'élément <gi>msContents</gi> contient la description du contenu intellectuel de la partie encodée du manuscrit. Il n'y pas de <gi>summary</gi> 
-                          étant donné que nous n'avions pas de parties dénominées dans la notice du catalogue et indiquées dans le manuscrit, mais plutôt des rubriques en rouge. 
+                          étant donné que nous n'avons pas de parties dénominées dans la notice du catalogue et indiquées dans le manuscrit, mais plutôt des rubriques en rouge. 
                           Si bien qu'un premier <gi>msItem</gi> est présent pour apporter des informations sur la structure intérieure du manuscrit, à savoir la présence d'un incipit (<gi>incipit</gi>) 
                           et d'un explicit (<gi>explicit</gi>) généraux. Le second <gi>msItem</gi> imbriqué dans le premier, apporte des informations sur la position de l'extrait dans le manuscrit. 
                           C'est-à-dire sa localisation (<gi>locus</gi>), la rubrique (<gi>rubric</gi>) dans laquelle il est contenu, et la langue (<gi>textLang</gi>) dans laquelle il est écrit. 
@@ -162,7 +161,7 @@
                           L'élément <gi>decoDesc</gi> donne une description des éléments décoratifs de l'extrait de la "Quête de Gauvain". Quant au <gi>bindingDesc</gi>, il décrit la reliure.</p>
                     <p>Dans le <gi>decoDesc</gi>, une succession de <gi>decoNote</gi> donne des précisions sur les lettrines ornées de la partie encodée.</p>
                     <p>L'élément <gi>history</gi> explique l'historique du manuscrit depuis sa création (<gi>origin</gi>) jusqu'à son entrée à la Bibliothèque nationale de France. 
-                          Il renseigne également une bibliographie d'ouvrages mentionnant le manuscrit 16999 (<gi>listBibl</gi>). Les titres (<gi>title</gi>) des ouvrages mentionnés 
+                          Il renseigne également une bibliographie d'ouvrages mentionnant le manuscrit Français 16999 (<gi>listBibl</gi>). Les titres (<gi>title</gi>) des ouvrages mentionnés 
                           peuvent avoir un attribut <att>level</att> avec les valeur suivantes : <list>
                     <item><val>a</val> pour l'article qui est une unité cohérente d'un ouvrage tel qu'un chapitre</item>
                     <item><val>m</val> pour monographie</item></list>. 
@@ -178,16 +177,16 @@
                   <p>Le <gi>profileDesc</gi> comporte des déclarations qui ne relèvent pas pas des données bibliographiques sur l'encodage, des informations complémentaires 
                         pour la compréhension du texte. Il est composé de deux index de personnages (<gi>particDesc</gi>) et de noms de lieux (<gi>settingDesc</gi>).</p>
                   <p>Dans le <gi>particDesc</gi>, tous les personnages figurant dans l'extrait n'ont pas été référencés. Les "voisins" et les "amis" d'Hélains de Taningues n'y sont pas 
-                        car ce sont des personnages peu importants. Les personnages renseignées, sont ceux qui sont importants pour la compréhension de l'extrait et de l'ensemble du manuscrit 
-                        dans le cas où ce dernier serait entièrement encodé. L'index a été réalisée à partir d'une suite successive d'éléments <gi>person</gi> qui regroupe 
+                        car ce sont des personnages peu importants. Les personnages renseignés sont ceux qui sont importants pour la compréhension de l'extrait et de l'ensemble du manuscrit 
+                        dans le cas où ce dernier serait entièrement encodé. L'index a été réalisé à partir d'une suite successive d'éléments <gi>person</gi> qui regroupent 
                         les éléments <gi>persName</gi> et <gi>note</gi>, dans <gi>listPerson</gi>. Le <gi>persName</gi>renseigne le nom du personnage, tel qu'il figure dans l'extrait. 
                         La <gi>note</gi> explique son rôle et une courte description sur ses liens de parentés avec le roi Arthur et, ou d'autres seigneurs dans 
                         la <hi rend="italic">Première partie du roman en prose du Lancelot du lac</hi>. L'identifiant associé à <gi>person</gi> à une valeur qui indique 
-                        le type de relation entre le personnage référencé et Hélains de Taninques, et également le nom de personnages dans le manuscrit. 
+                        le type de relation entre le personnage référencé et Hélains de Taninques, et également le nom des personnages dans le manuscrit. 
                         La valeur associée aux <att>xml:id</att> est normalisée pour les noms communs, mais pas pour les noms de personnages.</p>
                   
                   <p>Dans l'exemple ci-dessous, la valeur de <att>xml:id</att> est un nom qui ne figure pas dans l'extrait mais qui est très connu des lecteurs contemporains. 
-                        On associe très souvent la <val>Guenievre</val> qui est la "dame de Rohestot" à Lancelot.</p> <!-- Bien -->
+                        On associe très souvent <val>Guenievre</val> qui est la "dame de Rohestot" à Lancelot.</p>
                   
                   <egXML xmlns="http://www.tei-c.org/ns/Examples">
                      <person xml:id="Guenievre">
@@ -221,7 +220,7 @@
                         Ses attributs, <att>ulx</att>, <att>uly</att>, <att>lrx</att> et <att>lry</att>, renseignement les coordonnées en abscisse et en ordonnée de la capture rectangulaire 
                         réalisée à partir de l'image du feuillet du manuuscrit grâce au <ref target="http://teicat.huma-num.fr/zoner.php">TEI Zoner</ref>.</p>
                   <p>La relation entre les captures de l'image du manuscrit et les lignes de la transcription se fait de la manière suivante. 
-                        Chaque début ligne du feuillet d'origine a été indiqué par <gi>lb</gi> et associé à un attribut <att>ref</att>. 
+                        Chaque début ligne du feuillet d'origine a été indiquée par <gi>lb</gi> et associée à un attribut <att>ref</att>. 
                         Cet attribut a comme valeur la valeur de l'<att>xml:id</att> dans l'élément <gi>zone</gi> de l'élément <gi>graphic</gi>.</p>
                
                </div3>
@@ -231,19 +230,19 @@
                 <div4>
                    <head>La structuration générale du texte</head>
                    <p>L'élément <gi>div</gi> a un attribut <att>type</att> dont la valeur est <val>roman</val>. Il est composé d'un élément <gi>head</gi> et d'un autre élément <gi>div</gi>. La balise <gi>head</gi> contient le titre du manuscrit transcrit.
-                      La balise <gi>div</gi> a des attributs : <att>type</att> ; <att>subtype</att> ; <att>n</att>. Cette balise permet de reproduire la mise en page du manuscrit décrite ci-dessous. L'attribut <att>type</att> a une valeur qui <val>chapitre</val>. L'attribut <att>subtype</att> a une valeur qui le nom du <val>chapitre</val>.
+                      La balise <gi>div</gi> a des attributs : <att>type</att> ; <att>subtype</att> ; <att>n</att>. Cette balise permet de reproduire la mise en page du manuscrit décrite ci-dessous. L'attribut <att>type</att> a une valeur qui est <val>chapitre</val>. L'attribut <att>subtype</att> a une valeur qui est le nom du <val>chapitre</val>.
                       L'attribut <att>n</att> a une valeur qui est le numéro du <val>chapitre</val>. On privilégie la dénomination de "chapitre" qui correspond aux "rubriques" d'origine du manuscrit.</p>
                 </div4>
                 <div4>
                    <head>La reproduction de la mise en page du manuscrit</head>
-                   <p>Le choix a été fait de respecter la mise en page du manuscrit d'origine grâce aux éléments suivants : <!-- un <layout> aurait pu être ajouté -->
+                   <p>Le choix a été fait de respecter la mise en page du manuscrit d'origine grâce aux éléments suivants :
                    <specList>
                       <specDesc key="pb"/>
                       <specDesc key="cb"/>
                       <specDesc key="lb"/>
                    </specList>
                    </p> 
-                   <p><gi>pb</gi> est une balise auto-fermante qui sert à indiquer le début d'un feuillet. Elle est associée avec l' attribut <gi>facs</gi> qui indique l'URL vers Gallica et l'attribut <att>n</att>  
+                   <p><gi>pb</gi> est une balise auto-fermante qui sert à indiquer le début d'un feuillet. Elle est associée à l'attribut <gi>facs</gi> qui indique l'URL vers Gallica, et à l'attribut <att>n</att>  
                          qui indique le numéro du feuillet du manuscrit.</p>
                    <p><gi>cb</gi> est une balise auto-fermante indiquant le début d'une colonne. L'attribut <att>n</att> indique le nombre de colonnes sur un feuillet.</p>
                    <p><gi>lb</gi> est une balise auto-fermante qui permet d'indiquer le début d'une nouvelle ligne. Elle peut-être associée à <att>break</att> avec <val>no</val> 
@@ -284,7 +283,6 @@
                          en mélangeant les discours directs et indirects. Les discours rapportés directs n'avaient pas toujours de verbes introducteurs tels que "dire", "répondre", etc.
                          L'ensemble de ces discours directs et indirects forment plutôt une alternance de longs monologues d'Hélains de Taningues et de Gauvain que de dialogues. 
                          Si bien que la prise de paroles ont été simplement indiquées par <gi>said</gi> associé à un attribut <att>who</att>.
-                         <!-- c'est un point intéressant : une différence a-t-elle était faite pour ditinguer ces deux types de discours ? -->
                          La valeur de <att>who</att> est celle de l'<att>xml:id</att> du <gi>person</gi> du personnage concerné.</p>
                 </div4>
                     
@@ -301,17 +299,17 @@
                      Les choix appliqués ont été les suivants :
                <list>
                   <item>la résolution des abréviations ;</item>
-                  <item>la suppression des diacritiques et des variantes graphiques médiévaux ;</item>
+                  <item>la suppression des diacritiques et des variantes graphiques médiévales ;</item>
                   <item>le rétablissement d'une ponctuation modernisée ;</item>
                   <item>la segmentation d'unités-mots normalisées ;</item>
                   <item>l'usage de diacritiques désambiguisants (é, à, ù) ;</item>
                   <item>la distinction u/v et i/j ;</item>
                   <item>le rétablissement des majuscules aux premières lettres des noms propres ;</item>
                   <item>la séparation de ligatures ;</item>
-                  <item>la correction de la graphie fautive.</item><!-- Bien -->
+                  <item>la correction de la graphie fautive.</item>
                </list>
                Ils seront expliqués plus en détails dans les parties suivantes.</p>
-               <p>Les choix de normalisations et la résolution des abréviations ont pû être réalisés grâce à des entités déclarées dans une Document Type Definition (DTD). 
+               <p>Les choix de normalisations et la résolution des abréviations ont pu être réalisés grâce à des entités déclarées dans une Document Type Definition (DTD). 
                      Cette dernière permet de conserver la graphie d'origine du manuscrit, d'alléger l'encodage et d'éviter de faire des erreurs</p>
                <p>Dans la DTD, l'élément <gi>choice</gi> permet d'encoder les alternatives au texte d'origine. Plusieurs catégories de paires de balises sont possibles :</p>
                <list>
@@ -329,7 +327,7 @@
                      <item>&#363; : u minuscule macron en remplacement d'un "u" avec tilde au-dessus ;</item>
                      <item>&#345; : un r minuscule caron en remplacement d'un "r" avec tilde au-dessus ;</item>
                      <item>&#241; : n minuscule tilde ;</item>
-                     <item>&#x0303; : la tilde a été utilisée quand les caractères de substitutions dans l'Unicode ne convenaient pas. La tilde a alors été ajouté à la lettre de base ;</item>
+                     <item>&#x0303; : la tilde a été utilisée quand les caractères de substitutions dans l'Unicode ne convenaient pas. La tilde a alors été ajoutée à la lettre de base ;</item>
                      <item>&#382; : z minuscule caron en remplacement d'un "z" avec tilde au-dessus ;</item>
                      <item>&#257; : a minuscule macron en remplacement d'un "a" avec une tilde au-dessus ;</item>
                      <item>&#383; : s tironien ;</item>
@@ -354,7 +352,7 @@
                    "<choice><abbr>Gau&#363;</abbr><expan>Gauv<ex>ain</ex></expan></choice>"
                   </egXML>
                   
-                  <p>Ce principe a également était appliqué lorsque le mot abrévié apparaissait une fois et quand l'abréviation portait sur plusieurs lettres.</p>
+                  <p>Ce principe a également été appliqué lorsque le mot abrévié apparaissait une fois et quand l'abréviation portait sur plusieurs lettres.</p>
                      
                   <p>La création des entités syllabes était préférable à la création d'entité pour chaque mot abrévié. Les syllabes de ces mots abrégés étaient souvent les mêmes. 
                         Cela permettait d'alléger l'encodage de la transcription.</p>
@@ -400,7 +398,7 @@
                      <p>Dans les textes médiévaux, les noms propres ont souvent plusieurs graphies différentes. Aucune correction graphique 
                            n'a donc été appliquée au noms propres figurant dans le manuscrit. Un élément <gi>persName</gi> associé à un attribut <att>ref</att> permet de réunir, 
                            sous une même entité indexée dans le <gi>particDesc</gi>, les différentes variations graphiques d'un même personnage. 
-                           La valeur de <att>ref</att> reprend celle de l'identifiant de <gi>person</gi> du <gi>profileDesc</gi>.</p> <!-- Bien -->
+                           La valeur de <att>ref</att> reprend celle de l'identifiant de <gi>person</gi> du <gi>profileDesc</gi>.</p>
                      <p>Dans la transcription, les noms de lieux ont été encodés de la même manière que les noms de personnages. Un élément <gi>placeName</gi> 
                            associé à un attribut <att>ref</att> permet d'identifier un lieu. La valeur de <att>ref</att> reprend celle de l'identifiant de <gi>place</gi> du <gi>settingDesc</gi></p>
                   </div4>
@@ -414,7 +412,7 @@
                      <head>La désambiguïsation des finales en "e", "ee", "es", "ees"</head>
                      <p>Il a été nécessaire de différencier les finales en e muet de celles qui se prononcent [ø]. Une entité "é" a été créée pour accentuer 
                            le ou le premier "e" des finales en "e", "ee", "es, "ees" qui se prononcent [ø]. Cela permettait de distinguer les participes passés, 
-                           la terminaison des verbes à la deuxième personne du pluriel, les prépositions "après" et "près", et le derterminant "mes".</p>
+                           la terminaison des verbes à la deuxième personne du pluriel, les prépositions "après" et "près", et le déterminant "mes".</p>
                      
                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
                         "<choice><orig>e</orig><reg>é</reg></choice>"
@@ -426,7 +424,7 @@
                      <p>Il a été nécessaire de différencier les homonymes graphiques "a" et "ou"</p>
                      <p>Un "a" pouvait être soit la troisième personne du singulier de l'auxiliaire avoir "a" ou bien la préposition "à". 
                            Un "ou" pouvait être soit la conjonction de coordination "ou" ou bien la préposition "où". C'est pourquoi les lettres "a" et "u" ont été accentuées 
-                           lorsqu'il était question de la présence de préposition.</p>
+                           lorsqu'il était question de la présence de prépositions.</p>
                      <p>Les entités suivantes ont alors été créées :</p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
                        <choice><orig>a</orig><reg>à</reg></choice>"
@@ -456,12 +454,12 @@
                   <div4>
                      <head>La ponctuation modernisée</head>
                      <p>Le rétablissemnt d'une ponctuation moderne a été nécessaire afin de fluidifier la lecture et de faciliter la compréhension du texte. 
-                           Au Moyen-Âge, des segments de phrases de succéder les uns aux autres grâce à l'abréviation du et tyronien ou du "si". Si bien que les phrases 
+                           Au Moyen-Âge, des segments de phrases se succédaient les uns aux autres grâce à l'abréviation du "et" tyronien ou du "si". Si bien que les phrases 
                            du texte d'origine sont très longues et le sujet n'est alors plus facilement identifiable.</p>
-                     <p>La ponctuation initiale du manuscrit était composé de point, de virgule, de ponctus elevatus (&#x2e4e;). Selon le contexte, elle a été transcrite 
+                     <p>La ponctuation initiale du manuscrit était composée de point, de virgule, de ponctus elevatus (&#x2e4e;). Selon le contexte, elle a été transcrite 
                            ou remplacée par la ponctuation moderne : point (.) ; virgule (,) ; point d'exclamation (!) ; point d'interrogation (?). Dans certains cas, elle a été supprimée, 
                            notamment pour les points qui n'avaient pas lieu d'être. Selon le contexte, une ou plusieurs entités d'une même ponctuation ont été créées afin de normaliser 
-                           la ponctuation considérée. Après la ponctuation des majuscules aux premières lettres des mots ont été ajoutées, si elles n'étaient pas présentes dans le texte d'origine.</p>
+                           la ponctuation considérée. Après la ponctuation, des majuscules aux premières lettres des mots ont été ajoutées, si elles n'étaient pas présentes dans le texte d'origine.</p>
                      
                      <p>Dans l'exemple ci-dessous, l'entité "virgule" est utilisée quand on ajoute au passage d'origine une virgule qui était absente. 
                            Contrairement à l'entité "virgule2" qui est utilisée quand le passage d'origine comporte un "." qu'on souhaite remplacer par une ",".</p>
@@ -480,10 +478,10 @@
                            a été normalisée par des guillemets ouvrants et fermants.</p>
                      <p>Une difficulté a été rencontrée sur la présence d'un point (.) avant et après les guillemets fermants, ou bien qu'uniquement avant les guillemets fermants. 
                            Les passages au discours direct étaient souvent de longs monologues qui étaient constitutés de plusieurs phrases successives. 
-                           La ponctuation retenue à était la suivante : les passages rapportés au discours direct, ayant un verbe introducteur comme "disoie", 
+                           La ponctuation retenue a été la suivante : les passages rapportés au discours direct, ayant un verbe introducteur comme "disoie", 
                            ont été ponctués par un point (.) avant et après les guillemets fermants. Quant aux passages rapportés au discours direct n'ayant pas un verbe introducteur, 
-                           ils ont été ponctuées par un point (.) avant les guillemets fermants.</p> <!-- Bien -->
-                     <p>Dans les discours rapportés directs, il pouvait y avoir l'alternance de prises de paroles de différents personnages. 
+                           ils ont été ponctués par un point (.) avant les guillemets fermants.</p>
+                     <p>Dans les discours rapportés directs, il pouvait y avoir une alternance des prises de paroles de différents personnages. 
                            C'est pourquoi l'usage du tiret cadratin (–) a été requis. La ponctuation de part et d'autre du tiret cadratin (–) pouvait être le point, le point d'exclamation, 
                            et le point d'interrogration. En présence de cette ponctuation d'un côté du tiret cadratin, un majuscule était requise à la première lettre du premier mot du côté opposé. 
                            L'ajout du tiret cadratin a été réalisé grâce à l'entité "tiret-long".</p>
