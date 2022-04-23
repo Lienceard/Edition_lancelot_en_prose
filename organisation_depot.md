@@ -10,7 +10,7 @@ Dans le dossier "devoir_XSLT", sont rangés les fichiers corrigés de l'édition
 - L'encodage en XML-TEI corrigé est dans le fichier "LC-edition-paleo-version2.xml" ;
 - La DTD n'a pas été modifiée. Elle est dans le fichier "LC-DTD.dtd";
 - L'ODD a été corrigée. Elle est dans le fichier "LC-ODD.xml" ;
-- Le schema Relax NG est dans le fichier "LC-ODD.rng" qui est dans le dossier "out" ;
+- Le schéma Relax NG est dans le fichier "LC-ODD.rng" qui est dans le dossier "out" ;
 - La feuille transformation XSL est dans le fichier "feuille_transformation.xsl" ;
 - Les pages HTML de l'édition numérique sont les fichiers finissant par ".html". 
 
