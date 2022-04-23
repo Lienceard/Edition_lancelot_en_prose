@@ -3,13 +3,15 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
     xpath-default-namespace="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="xs tei"
     version="2.0">
-    <!-- Attention une sortie HTML => exclusion du préfixe tei des résultats -->
+    
+    <!-- une sortie HTML -->
     
     <xsl:output method="html" indent="yes" encoding="UTF-8"/>
     
     <!-- Gestion des espaces -->
     <xsl:strip-space elements="*"/> <!-- pour éviter les espaces non voulus -->
     <xsl:preserve-space elements="p said placeName persName orig reg"/> <!-- pour préserver les espaces contenus dans certains éléments  -->
+    
     <xsl:template match="/">
         <xsl:variable name="witfile">
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
@@ -18,18 +20,6 @@
         
         <!-- les variables pour les chemins des fichiers .html -->
         
-        <xsl:variable name="pathAllo">
-            <xsl:value-of select="concat($witfile,'allograph','.html')"/>
-        </xsl:variable>
-        <xsl:variable name="pathNorm">
-            <xsl:value-of select="concat($witfile,'norm','.html')"/>
-        </xsl:variable>
-        <xsl:variable name="pathIndexLieux">
-            <xsl:value-of select="concat($witfile,'indexLieux','.html')"/>
-        </xsl:variable>
-        <xsl:variable name="pathIndexPers">
-            <xsl:value-of select="concat($witfile,'indexPers','.html')"/>
-        </xsl:variable>
         <xsl:variable name="pathAccueil">
             <xsl:value-of select="concat($witfile, 'accueil','.html')"/>
         </xsl:variable>
@@ -39,10 +29,25 @@
         <xsl:variable name="pathchap">
             <xsl:value-of select="concat($witfile, 'chap','.html')"/>
         </xsl:variable>
+        <xsl:variable name="pathAllo">
+            <xsl:value-of select="concat($witfile,'allograph','.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathNorm">
+            <xsl:value-of select="concat($witfile,'norm','.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathIndexPers">
+            <xsl:value-of select="concat($witfile,'indexPers','.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathIndexLieux">
+            <xsl:value-of select="concat($witfile,'indexLieux','.html')"/>
+        </xsl:variable>
+          
         
         <xsl:variable name="titre_manuscrit">
             <xsl:value-of select="concat(.//head/title, ' ', '(',.//head/origDate, ')', ' de ', .//name[@xml:id='Gauthier_Map'] )"/>
-        </xsl:variable>       
+        </xsl:variable>  
+        
+        <!-- la page d'accueil -->
        
         <xsl:result-document href="{$pathAccueil}"
             method="html" indent="yes">
@@ -55,26 +60,28 @@
                 </head>
                 <body>
                     <h1><xsl:value-of select="$titre_manuscrit"/></h1>
-                    <p><xsl:value-of select="concat('Cette édition en ligne a été réalisée à partir du manuscrit ', $ms_bnf, ' conservé à la ', .//institution, '. ')"/>
-                    <xsl:value-of select="concat( 'Une feuille de transformation XSL a été rédigée à partir ', 'd une ', $responsable, ' ', $ms_bnf, ', réalisés par ', .//editionStmt/respStmt//forename, ' ', .//editionStmt/respStmt//surname, '. ')"/>
+                    <p><xsl:value-of select="concat('Cette édition en ligne a été réalisée à partir du manuscrit ', 'Français ', $ms_bnf, ' conservé à la ', .//institution, '. ')"/>
+                    <xsl:value-of select="concat( 'Une feuille de transformation XSL a été rédigée à partir ', 'd une ', $responsable, ' Français ', $ms_bnf, ', réalisés par ', .//editionStmt/respStmt//forename, ' ', .//editionStmt/respStmt//surname, '. ')"/>
                     Les choix éditoriaux ont été les suivants. Le terme "Chapitre" a été privilégié à celui de "rubrique" pour distinguer les parties du manuscrit transcrites et encodées.
                     Les transcriptions ont été segmentées en paragraphes afin de faciliter la compréhension du texte.</p>
                     
                     <div type="sommaire">
                         <h2>Sommaire</h2>
                         <ul>
-                            <li><a href="{$pathnoticems}"><xsl:value-of select="concat('Notice du manucrit ', $ms_bnf)"/></a></li>
+                            <li><a href="{$pathnoticems}"><xsl:value-of select="concat('Notice du manucrit ', 'Français ', $ms_bnf)"/></a></li>
                             <li><a href="{$pathchap}"><xsl:call-template name="titre_chapitre"/></a></li>
                             <li><a href="{$pathAllo}">La transcription allographétique</a></li>
                             <li><a href="{$pathNorm}">La transcription normalisée</a></li>
-                            <li><a href="{$pathIndexPers}">L'index des noms de personnages</a></li>
-                            <li><a href="{$pathIndexLieux}">L'index de lieux</a></li>
+                            <li><a href="{$pathIndexPers}">L'index des personnages</a></li>
+                            <li><a href="{$pathIndexLieux}">L'index des lieux</a></li>
                         </ul>
                     </div>
                    
                 </body>
             </html>
         </xsl:result-document>
+        
+        <!-- la page de la notice du manuscrit -->
         
         <xsl:result-document href="{$pathnoticems}"
             method="html" indent="yes">
@@ -139,6 +146,8 @@
                 </body> 
             </html>
         </xsl:result-document>
+        
+        <!-- la page de la présentation du chapitre -->
         
         <xsl:result-document href="{$pathchap}"
             method="html" indent="yes">
@@ -294,15 +303,13 @@
         
         </xsl:template>
     
-    <!-- page d'accueil -->
-    
-    <!-- variables pour la note de l'éditeur -->
+    <!-- variables pour la page d'accueil -->
     
     <xsl:variable name="ms_bnf">
         <xsl:value-of select="replace(.//msDesc/@*[local-name()='id'] , 'ms', '')"/>
     </xsl:variable>
     <xsl:variable name="responsable">
-        <xsl:value-of select="replace(.//editionStmt/respStmt/resp, 'et', 'et d un')"/>
+        <xsl:value-of select="replace(.//editionStmt/respStmt/resp, 'et', 'et d une')"/>
     </xsl:variable>
     
     <!-- notice du manuscrit -->
@@ -346,6 +353,8 @@
         </xsl:element>
     </xsl:template>
     
+<!-- les hyperliens renvoyant à l'index des personnages -->    
+    
     <xsl:template match="text/body//p//persName" mode="#all">
                 <xsl:variable name="witfile">
                     <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
@@ -361,6 +370,8 @@
                     <xsl:apply-templates mode="#current"/>
                 </xsl:element>
             </xsl:template>
+    
+    <!-- les hyperliens renvoyant à l'index des lieux -->    
     
     <xsl:template match="text/body//p//placeName" mode="#all">
         <xsl:variable name="witfile">
