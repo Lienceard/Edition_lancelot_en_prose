@@ -111,7 +111,7 @@
                     <p>L'élément <gi>head</gi> est en quelque sorte la fiche du manuscrit. Il indique son titre (<gi>title</gi>) et sa date d'origine (<gi>origDate</gi>). 
                           Dans l'encodage, il n'est pas possible de rajouter, à la balise <gi>origDate</gi>, un attribut <att>when</att> pour renseigner la date selon la norme ISO 8601.
                           Il n'est pas possible de renseigner une période d'une durée d'un siècle. Habituellement, pour les balises <gi>date</gi>, cet attribut est ajouté.</p>
-                    <p>L'élément <gi>msContents</gi> contient la description du contenu intellectuel de la partie encodée du manuscrit. Il n'y pas de <gi>summary</gi> 
+                    <p>L'élément <gi>msContents</gi> contient la description du contenu intellectuel de la partie encodée du manuscrit. Il n'y a pas de <gi>summary</gi> 
                           étant donné que nous n'avons pas de parties dénominées dans la notice du catalogue et indiquées dans le manuscrit, mais plutôt des rubriques en rouge. 
                           Si bien qu'un premier <gi>msItem</gi> est présent pour apporter des informations sur la structure intérieure du manuscrit, à savoir la présence d'un incipit (<gi>incipit</gi>) 
                           et d'un explicit (<gi>explicit</gi>) généraux. Le second <gi>msItem</gi> imbriqué dans le premier, apporte des informations sur la position de l'extrait dans le manuscrit. 
