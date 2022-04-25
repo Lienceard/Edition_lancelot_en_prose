@@ -13,6 +13,7 @@
     <xsl:preserve-space elements="p said placeName persName orig reg"/> <!-- pour préserver les espaces contenus dans certains éléments  -->
     
     <xsl:template match="/">
+        <!-- variable qui stock le chemin du fichier courant -->
         <xsl:variable name="witfile">
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
             <!-- récupération du nom et du chemin du fichier courant -->
@@ -82,7 +83,7 @@
                     <h1><xsl:value-of select="$titre_manuscrit"/></h1>
                     <p><xsl:value-of select="concat('Cette édition en ligne a été réalisée à partir du manuscrit ', 'Français ', $ms_bnf, ' conservé à la ', .//institution, '. ')"/>
                     <xsl:value-of select="concat( 'Une feuille de transformation XSL a été rédigée à partir ', 'd une ', $responsable, ' Français ', $ms_bnf, ', réalisés par ', .//editionStmt/respStmt//forename, ' ', .//editionStmt/respStmt//surname, '. ')"/>
-                    Les choix éditoriaux ont été les suivants. Le terme "Chapitre" a été privilégié à celui de "rubrique" pour distinguer les parties du manuscrit transcrites et encodées.
+                        Les choix de transcription et d'encodage sont expliqués plus en détails dans une <a href="https://github.com/Lienceard/Edition_lancelot_en_prose/blob/main/devoir_XSLT/LC-ODD.html">ODD</a>. Le terme "Chapitre" a été privilégié à celui de "rubrique" pour distinguer les parties du manuscrit transcrites et encodées.
                     Les transcriptions ont été segmentées en paragraphes afin de faciliter la compréhension du texte. </p>
                     
                     <div type="sommaire">
