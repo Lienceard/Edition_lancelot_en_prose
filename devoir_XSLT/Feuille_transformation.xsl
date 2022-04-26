@@ -430,7 +430,7 @@
                 </xsl:variable>
                 <xsl:text> : </xsl:text>
                 <xsl:value-of select="ancestor::person/note"/>
-                <p>Occurences rencontrées :
+                <p>Occurrences rencontrées :
                 <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#','')=$idPerson]">
                     <xsl:apply-templates mode="reg"/>
                     <xsl:text> (§.</xsl:text>
@@ -463,7 +463,7 @@
                 </xsl:variable>
                 <xsl:text> : </xsl:text>
                 <xsl:value-of select="ancestor::place/note"/>
-                <p>Occurences rencontrées :
+                <p>Occurrences rencontrées :
                 <xsl:for-each select="ancestor::TEI//body//placeName[replace(@ref, '#','')=$idPlace]">
                     <xsl:apply-templates mode="reg"/>
                     <xsl:text> (§.</xsl:text>
